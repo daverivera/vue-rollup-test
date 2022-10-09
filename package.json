@@ -1,0 +1,23 @@
+{
+  "name": "rollup",
+  "scripts": {
+    "lib": "npm run build -w lib",
+    "app": "npm run build -w app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daverivera/vue-rollup-test.git"
+  },
+  "dependencies": {
+    "vue": "2.7.8"
+  },
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3",
+    "vue-template-compiler": "2.7.8"
+  },
+  "workspaces": [
+    "app",
+    "lib"
+  ]
+}
