@@ -1,11 +1,13 @@
 <template>
-    <button type="button" @click="$emit('on-click')"=>
+    <button type="button" @click="$emit('on-click')">
       <slot></slot>
     </button> 
 </template>
  
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: "ds-button"
-};
+});
 </script>

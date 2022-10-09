@@ -12,22 +12,26 @@ export default {
   },
   external: ['vue'],
   plugins: [
-    typescript({
-      tsconfig: './tsconfig.json',
-      //experimentalDecorators: true,
-      //module: 'es2015'
-    }),
-    scss(),
+    //typescript({
+      //tsconfig: './tsconfig.json',
+      ////experimentalDecorators: true,
+      ////module: 'es2015'
+    //}),
+    //scss(),
     vue({
-      //compileTemplate: true,
-      compiler: require('@vue/compiler-sfc'),
-      css: true, 
-      compileTemplate: true,
-      //css: false,
-      defaultLang: { 
-        script: 'ts' ,
-        style: 'sccss'
+      css: true,
+      template: {
+        isProduction: true,
       },
+      //compileTemplate: true,
+      //compiler: require('@vue/compiler-sfc'),
+      //css: true, 
+      //compileTemplate: true,
+      //css: false,
+      //defaultLang: { 
+        //script: 'ts' ,
+        //style: 'sccss'
+      //},
     }),
   ]
 };
