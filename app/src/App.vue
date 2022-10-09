@@ -13,7 +13,7 @@
  
 <script lang="ts">
 
-import { DsButton } from 'lib'
+import { DsButton } from '@drivera/lib'
  
 export default {
     name: "App",
