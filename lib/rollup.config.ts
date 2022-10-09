@@ -1,4 +1,5 @@
-import typescript from '@rollup/plugin-typescript'
+//import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript2';
 //import vue from 'rollup-plugin-vue2';
 import scss from 'rollup-plugin-scss';
 import vue from 'rollup-plugin-vue'
@@ -8,30 +9,30 @@ export default {
   output: {
     file: 'dist/index.js',
     //format: 'cjs'
-    format: 'esm'
+    format: 'esm',
+    exports: 'named',
   },
   external: ['vue'],
   plugins: [
-    //typescript({
-      //tsconfig: './tsconfig.json',
-      ////experimentalDecorators: true,
-      ////module: 'es2015'
-    //}),
+    typescript({
+      tsconfig: './tsconfig.json',
+      //useTsconfigDeclarationDir: true,
+      //emitDeclarationOnly: true,
+      //experimentalDecorators: true,
+      //module: 'ES2020'
+    }),
     //scss(),
     vue({
       css: true,
-      template: {
-        isProduction: true,
-      },
-      //compileTemplate: true,
-      //compiler: require('@vue/compiler-sfc'),
-      //css: true, 
-      //compileTemplate: true,
-      //css: false,
-      //defaultLang: { 
-        //script: 'ts' ,
-        //style: 'sccss'
+      //template: {
+        //isProduction: true,
+        //compileTemplate: true,
+        //compiler: require('@vue/compiler-sfc'),
       //},
+      defaultLang: { 
+        script: 'ts' ,
+        style: 'scss'
+      },
     }),
   ]
 };

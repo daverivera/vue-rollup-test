@@ -5,7 +5,7 @@
         "sourceMap": true,
  
         "typeRoots": ["node_modules/@types"],
-        "module": "commonjs",
+        "module": "ES2020",
         "jsx": "react-jsx",
         "paths": {
             "@/*": ["src/*"]

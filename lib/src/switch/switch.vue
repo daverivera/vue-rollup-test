@@ -8,10 +8,21 @@
 </template>
  
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+
+export enum LabelPosition {
+  LEFT = 'left',
+  RIGHT = 'right',
+};
 
 export default defineComponent({
-    name: "ds-switch"
+    name: "ds-switch",
+  props: {
+    labelPosition: {
+      type: String as PropType<LabelPosition>,
+      default: LabelPosition.LEFT
+    }
+  }
 });
 </script>
 

@@ -61,6 +61,7 @@ const baseConfig: Configuration = {
         extensions: ['*', '.vue', '.js', '.ts'],
         modules: ['src', 'node_modules']
     },
+    externals: ['vue'],
     optimization: {
         providedExports: true,
         usedExports: true,

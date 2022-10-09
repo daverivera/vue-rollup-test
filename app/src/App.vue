@@ -4,7 +4,7 @@
             <h1>ADL Test project</h1>
         </head>
         <article>
- 
+            <ds-button @click="clickedButtonAction">Increment</ds-button>
             <span>{{ count }}</span>
         </article>
  
@@ -13,18 +13,12 @@
  
 <script lang="ts">
 
-            /*<adl-button*/
-                /*@on-click="clickedButtonAction"*/
-            /*>*/
-                /*Button */
-            /*</adl-button>*/
- 
-/*import { AdlButton } from '@adyen/adl-vue-components';*/
+import { DsButton } from 'lib'
  
 export default {
     name: "App",
     components: {
-        /*AdlButton*/
+        DsButton
     },
     data() {
         return {

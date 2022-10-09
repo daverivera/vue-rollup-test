@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "@drivera/app",
   "version": "1.0.0",
   "description": "",
   "main": "dist/bundle.index.js",
@@ -11,6 +11,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@drivera/lib": "*"
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.2.7",
