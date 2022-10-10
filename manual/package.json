@@ -2,7 +2,8 @@
   "name": "rollup",
   "scripts": {
     "lib": "npm run build -w lib",
-    "app": "npm run build -w app"
+    "app": "npm run build -w app",
+    "check": "npm run build -w app"
   },
   "repository": {
     "type": "git",
