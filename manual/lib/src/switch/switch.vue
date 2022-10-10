@@ -15,7 +15,7 @@ export enum LabelPosition {
   RIGHT = 'right',
 };
 
-export default defineComponent({
+export default /*#__PURE__*/defineComponent({
     name: "ds-switch",
   props: {
     labelPosition: {

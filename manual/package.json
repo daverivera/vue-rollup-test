@@ -3,7 +3,7 @@
   "scripts": {
     "lib": "npm run build -w lib",
     "app": "npm run build -w app",
-    "check": "npm run build -w app"
+    "check": "npm run check -w lib"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,6 @@
 //import typescript from '@rollup/plugin-typescript'
 import typescript from 'rollup-plugin-typescript2';
+import babel from '@rollup/plugin-babel';
 //import vue from 'rollup-plugin-vue2';
 import scss from 'rollup-plugin-scss';
 import vue from 'rollup-plugin-vue'
@@ -34,5 +35,10 @@ export default {
         style: 'scss'
       },
     }),
+    //babel({
+      //exclude: 'node_modules/**',
+      //extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+      //babelHelpers: 'bundled',
+    //}),
   ]
 };
