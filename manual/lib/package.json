@@ -6,7 +6,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "npm run clean && rollup -c rollup_other.config.ts",
-    "build1": "npm run clean && rollup -c rollup.config.ts",
+    "build1": "npm run clean && rollup -c rollup_simple.config.ts",
     "clean": "rm -rf ./dist",
     "check": "agadoo dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
