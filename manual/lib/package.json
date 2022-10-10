@@ -2,11 +2,13 @@
   "name": "@drivera/lib",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/lib.umd.js",
+  "module": "dist/lib.umd.js",
   "scripts": {
-    "build": "npm run clean && rollup -c rollup_other.config.ts",
+    "build": "npm run clean && vite build",
+    "build3": "npm run clean && vue-tsc && vite build",
     "build1": "npm run clean && rollup -c rollup_simple.config.ts",
+    "build2": "npm run clean && rollup -c rollup_other.config.ts",
     "clean": "rm -rf ./dist",
     "check": "agadoo dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +24,7 @@
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/node": "^18.8.3",
+    "@vitejs/plugin-vue2": "^2.0.0",
     "@vue/compiler-sfc": "^3.2.40",
     "agadoo": "^2.0.0",
     "rollup": "^2.79.1",
@@ -31,6 +34,8 @@
     "rollup-plugin-vue": "^5.1.9",
     "sass": "^1.55.0",
     "tslib": "^2.4.0",
-    "ttypescript": "^1.5.13"
+    "ttypescript": "^1.5.13",
+    "vite": "^3.1.7",
+    "vue-tsc": "^1.0.3"
   }
 }
