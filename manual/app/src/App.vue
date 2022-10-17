@@ -10,7 +10,7 @@
     </div>
 </template>
  
-<script lang="ts">
+<script>
 
             /*<ds-button @click="clickedButtonAction">Increment</ds-button>*/
 /*import { DsButton } from '@drivera/lib'*/
@@ -36,3 +36,6 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+</style>

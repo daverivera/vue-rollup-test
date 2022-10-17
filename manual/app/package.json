@@ -5,6 +5,7 @@
   "main": "dist/bundle.index.js",
   "scripts": {
     "build": "webpack",
+    "build2": "rollup -c rollup.config.ts",
     "prod": "webpack --config production.config.ts",
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,12 +14,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@drivera/lib": "*",
-    "@drivera/funcs": "*"
+    "@drivera/funcs": "*",
+    "@drivera/lib": "*"
   },
   "devDependencies": {
+    "@betit/rollup-plugin-rename-extensions": "^0.1.0",
     "css-loader": "5.2.7",
     "css-minimizer-webpack-plugin": "4.2.1",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^3.1.0",
     "sass-loader": "12.6.0",
     "stylelint-webpack-plugin": "3.2.0",
     "svg-url-loader": "2.3.2",
