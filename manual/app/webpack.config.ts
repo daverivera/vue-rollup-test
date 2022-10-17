@@ -71,7 +71,7 @@ const baseConfig: Configuration = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        library: 'esm',
+        //library: 'esm',
         filename: '[name].bundle.js',
         //library: {
           //type: 'module'
@@ -84,7 +84,7 @@ const baseConfig: Configuration = {
     //},
     resolve: {
         alias: {
-            // vue$: 'vue/dist/vue.esm.js',
+             vue$: 'vue/dist/vue.esm.js',
         },
         extensions: ['*', '.vue', '.js', '.ts'],
         modules: ['src', 'node_modules']

@@ -2,7 +2,7 @@ import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
 import { Configuration, WebpackPluginInstance } from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+//import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
  
  
@@ -12,7 +12,7 @@ import 'webpack-dev-server';
 const baseConfig: Configuration = {
     mode: 'production',
     //mode: 'production',
-    devtool: 'source-map',
+    //devtool: 'source-map',
     entry: {
         // index: './src/index.ts',
         index: path.resolve(__dirname, 'src/index.ts'),
@@ -63,12 +63,12 @@ const baseConfig: Configuration = {
         extensions: ['*', '.vue', '.js', '.ts'],
         modules: ['src', 'node_modules']
     },
-    optimization: {
+    //optimization: {
         ////providedExports: true,
-        usedExports: true,
+        //usedExports: true,
         //innerGraph: true,
         //mangleExports: 'deterministic',
-    },
+    //},
     devServer: {
         port: 3000,
     //     historyApiFallback: {
@@ -76,9 +76,9 @@ const baseConfig: Configuration = {
     //     }
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.ejs'
-        }),
+        //new HtmlWebpackPlugin({
+            //template: './index.ejs'
+        //}),
  
         new VueLoaderPlugin() as WebpackPluginInstance,
         new ForkTsCheckerWebpackPlugin({

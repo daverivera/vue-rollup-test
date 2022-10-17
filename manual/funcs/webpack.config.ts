@@ -10,6 +10,7 @@ const baseConfig: Configuration = {
     mode: 'development',
     //mode: 'production',
     //devtool: 'inline-source-map',
+    devtool: false,
     entry: {
         // index: './src/index.ts',
         index: path.resolve(__dirname, 'src/index.ts'),
@@ -31,7 +32,7 @@ const baseConfig: Configuration = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        library: 'umd',
+        //library: 'umd',
         clean: true,
     },
     resolve: {
@@ -44,7 +45,8 @@ const baseConfig: Configuration = {
     optimization: {
         usedExports: true,
         innerGraph: true,
-        mangleExports: 'deterministic',
+        sideEffects: true,
+        //mangleExports: 'deterministic',
     },
     devServer: {
         port: 3000,

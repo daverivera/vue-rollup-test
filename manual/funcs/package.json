@@ -2,7 +2,7 @@
   "name": "@drivera/funcs",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.bundle.js",
   "scripts": {
     "build": "rollup -c rollup.config.ts",
     "build2": "webpack",
