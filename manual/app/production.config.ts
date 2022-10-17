@@ -1,21 +1,18 @@
-// @ts-ignore
-// @ts-nocheck
 import path from 'path';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
 import { Configuration, WebpackPluginInstance } from 'webpack';
-//import HtmlWebpackPlugin from 'html-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
  
  
 import 'webpack-dev-server';
  
  
 const baseConfig: Configuration = {
-    mode: 'development',
+    mode: 'production',
     //mode: 'production',
-    //devtool: 'inline-source-map',
-    devtool: false,
+    devtool: 'source-map',
     entry: {
         // index: './src/index.ts',
         index: path.resolve(__dirname, 'src/index.ts'),
@@ -29,28 +26,12 @@ const baseConfig: Configuration = {
             {
                 test: /\.(ts|js)?$/,
                 exclude: [/node_modules/],
-                use: [
-                  {
-                    loader: 'babel-loader',
-                    options: {
-                      presets: ['@babel/preset-env']
-                    }
-                  },
-                  {
-                      loader: 'ts-loader',
-                      options: {
-                          appendTsSuffixTo: [/\.vue$/], // Process .vue files
-                          transpileOnly: true,
-                          configFile: require.resolve('./tsconfig.json'),
-                      },
-                  }
-                ],
-                //loader: 'ts-loader',
-                //options: {
-                    //appendTsSuffixTo: [/\.vue$/], // Process .vue files
-                    //transpileOnly: true,
-                    //configFile: require.resolve('./tsconfig.json'),
-                //},
+                loader: 'ts-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/], // Process .vue files
+                    transpileOnly: true,
+                    configFile: require.resolve('./tsconfig.json'),
+                },
             },
             {
                 test: /\.(scss|css)$/,
@@ -71,17 +52,10 @@ const baseConfig: Configuration = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        library: 'esm',
         filename: '[name].bundle.js',
-        //library: {
-          //type: 'module'
-        //},
         //library: 'umd',
         clean: true,
     },
-    //experiments: {
-      //outputModule: true,
-    //},
     resolve: {
         alias: {
             // vue$: 'vue/dist/vue.esm.js',
@@ -90,13 +64,10 @@ const baseConfig: Configuration = {
         modules: ['src', 'node_modules']
     },
     optimization: {
-        //providedExports: true,
+        ////providedExports: true,
         usedExports: true,
-        innerGraph: true,
-        sideEffects: true,
+        //innerGraph: true,
         //mangleExports: 'deterministic',
-        //minimize: true,
-        //minimizer: [new TerserPlugin()],
     },
     devServer: {
         port: 3000,
@@ -105,9 +76,9 @@ const baseConfig: Configuration = {
     //     }
     },
     plugins: [
-        //new HtmlWebpackPlugin({
-            //template: './index.ejs'
-        //}),
+        new HtmlWebpackPlugin({
+            template: './index.ejs'
+        }),
  
         new VueLoaderPlugin() as WebpackPluginInstance,
         new ForkTsCheckerWebpackPlugin({

@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue2'
 export default defineConfig({
   plugins: [vue()],
   build: {
-    target: 'es2015',
+    //target: 'es2020',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
@@ -17,7 +17,9 @@ export default defineConfig({
       // into your library
       external: ['vue'],
       output: {
-        //file: resolve(__dirname, 'dist/index.js')
+        format: 'esm',
+        //file: 'index.esm.js',
+        //dir: 'dist',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {

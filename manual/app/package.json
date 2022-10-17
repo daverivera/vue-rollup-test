@@ -5,6 +5,7 @@
   "main": "dist/bundle.index.js",
   "scripts": {
     "build": "webpack",
+    "prod": "webpack --config production.config.ts",
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,21 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@drivera/lib": "*"
+    "@drivera/lib": "*",
+    "@drivera/funcs": "*"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^5.2.7",
-    "fork-ts-checker-webpack-plugin": "^6.2.10",
-    "html-webpack-plugin": "^4.5.0",
-    "sass-loader": "^12.6.0",
-    "stylelint-webpack-plugin": "^3.2.0",
-    "svg-url-loader": "^2.3.2",
-    "ts-loader": "^8.4.0",
-    "vue-loader": "^15.10.0",
-    "vue-style-loader": "^4.1.3",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1"
+    "css-loader": "5.2.7",
+    "css-minimizer-webpack-plugin": "4.2.1",
+    "sass-loader": "12.6.0",
+    "stylelint-webpack-plugin": "3.2.0",
+    "svg-url-loader": "2.3.2",
+    "vue-loader": "15.10.0",
+    "vue-style-loader": "4.1.3"
   }
 }

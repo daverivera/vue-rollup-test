@@ -1,0 +1,17 @@
+{
+  "name": "mod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "prod": "webpack --config webpack.prod.config.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@drivera/funcs": "*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

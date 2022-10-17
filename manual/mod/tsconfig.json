@@ -9,11 +9,6 @@
         },
         "isolatedModules": true,
         "noImplicitThis": true,
-        "module": "commonjs",
         "target": "ES2020"
-    },
-
-    "vueCompilerOptions": {
-        "target": 2.7
     }
 }
