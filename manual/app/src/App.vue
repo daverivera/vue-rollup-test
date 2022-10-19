@@ -4,22 +4,22 @@
             <h1>ADL Test project</h1>
         </head>
         <article>
+            <ds-button @click="clickedButtonAction">Increment</ds-button>
             <span>{{ count }}</span>
         </article>
- 
     </div>
 </template>
  
 <script lang="ts">
 
-            /*<ds-button @click="clickedButtonAction">Increment</ds-button>*/
-/*import { DsButton } from '@drivera/lib'*/
-import { multi } from '@drivera/funcs'
+/*import { DsButton } from '@drivera/comps'*/
+import DsButton from '@drivera/comps'
+/*import { multi } from '@drivera/funcs'*/
  
 export default {
     name: "App",
     components: {
-        /*DsButton*/
+        DsButton
     },
     data() {
         return {
@@ -28,9 +28,9 @@ export default {
     },
     methods: {
         clickedButtonAction(): void {
-            const numbers = multi(2*4);
-            console.log(this, { numbers })
-            /*console.log(this)*/
+            /*const numbers = multi(2*4);*/
+            /*console.log(this, { numbers })*/
+            console.log(this)
             // this.count += 1;
         }
     }

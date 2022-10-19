@@ -1,3 +1,5 @@
+// @ts-ignore
+// @ts-nocheck
 import path from 'path';
 import { Configuration, WebpackPluginInstance } from 'webpack';
 //import HtmlWebpackPlugin from 'html-webpack-plugin';
