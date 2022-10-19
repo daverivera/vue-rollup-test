@@ -10,7 +10,7 @@
     </div>
 </template>
  
-<script lang="ts">
+<script>
 
 /*import { DsButton } from '@drivera/comps'*/
 import DsButton from '@drivera/comps'
@@ -36,3 +36,6 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+</style>
