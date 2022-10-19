@@ -1,0 +1,17 @@
+{
+  "name": "@drivera/lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/lib.mjs",
+  "scripts": {
+    "build:vite": "npm run clean && vite build",
+    "build": "rimraf dist && rollup -c",
+    "clean": "rm -rf ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.7.13"
+  }
+}
