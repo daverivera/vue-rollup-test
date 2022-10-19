@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "esModuleInterop": true,
+        "sourceMap": true,
+ 
+        "typeRoots": ["node_modules/@types"],
+        "module": "ES2020",
+        "jsx": "react-jsx",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "isolatedModules": true,
+        "noImplicitThis": true,
+        "target": "es5"
+    },
+    "vueCompilerOptions": {
+        "target": 2.7
+    }
+}

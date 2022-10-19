@@ -1,0 +1,17 @@
+{
+  "name": "vite-vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib.mjs",
+  "scripts": {
+    "app": "npm run build -w app",
+    "lib": "npm run build -w lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "app",
+    "lib"
+  ]
+}
