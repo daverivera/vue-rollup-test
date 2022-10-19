@@ -1,0 +1,20 @@
+{
+  "name": "@drivera/app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bundle.index.js",
+  "scripts": {
+    "build": "webpack",
+    "clean": "rm -rf dist/*",
+    "prod": "webpack --config production.config.ts",
+    "start": "webpack-dev-server --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@drivera/lib": "*",
+    "vue": "^2.7.13"
+  }
+}
