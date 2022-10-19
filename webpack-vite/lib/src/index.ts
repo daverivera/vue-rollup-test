@@ -8,16 +8,17 @@ import DsSwitch from './switch/switch.vue';
 
 export {
   DsSwitch,
-}
-
-export {  
   DsButton,
 }
 
-export default  () => 'Adl button'
-
-// export default {
-//   DsSwitch,
-//   DsButton
+// export {  
+//   DsButton,
 // }
+
+// export default  () => 'Adl button'
+
+export default {
+  DsSwitch,
+  DsButton
+}
 
