@@ -10,8 +10,7 @@
     </div>
 </template>
  
-<script lang="ts">
-
+<script>
 
 import { DsButton } from '@drivera/lib'
 /*import { multi } from '@drivera/funcs'*/
@@ -27,7 +26,7 @@ export default {
         }
     },
     methods: {
-        clickedButtonAction(): void {
+        clickedButtonAction() {
             /*const numbers = multi(2*4);*/
             /*console.log(this, { numbers })*/
             console.log(this)
@@ -36,3 +35,6 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+</style>
