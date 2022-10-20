@@ -46,7 +46,7 @@
     "webpack-dev-server": "4.8.1"
   },
   "dependencies": {
-    "vue": "2.7.8",
+    "vue": "2.7.13",
     "@drivera/lib": "*"
   }
 }

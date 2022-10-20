@@ -1,0 +1,20 @@
+{
+  "name": "vite-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "app": "npm run build -w app",
+    "lib": "npm run build -w lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "app",
+    "lib"
+  ]
+}
