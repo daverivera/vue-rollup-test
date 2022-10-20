@@ -1,0 +1,42 @@
+<template>
+    <div>
+        <head>
+            <h1>ADL Test project</h1>
+        </head>
+        <article>
+            <ds-button @click="clickedButtonAction">Increment</ds-button>
+            <span>{{ count }}</span>
+        </article>
+    </div>
+</template>
+ 
+<script>
+
+import *  as DLib from '@drivera/lib'
+/*import { multi } from '@drivera/funcs'*/
+ 
+const { DsButton } = DLib;
+
+export default {
+    name: "App",
+    components: {
+        DsButton
+    },
+    data() {
+        return {
+            count: 0,
+        }
+    },
+    methods: {
+        clickedButtonAction() {
+            /*const numbers = multi(2*4);*/
+            /*console.log(this, { numbers })*/
+            console.log(this)
+            // this.count += 1;
+        }
+    }
+};
+</script>
+
+<style scoped>
+</style>
