@@ -1,0 +1,27 @@
+{
+  "name": "@drivera/app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bundle.index.js",
+  "scripts": {
+    "build": "npm run clean && vite build",
+    "clean": "rm -rf dist/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@drivera/lib": "*",
+    "vue": "^2.7.13"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.19.4",
+    "typescript": "4.6.3",
+    "@types/node": "^18.8.3",
+    "@vitejs/plugin-vue2": "^2.0.0",
+    "tslib": "^2.4.0",
+    "ts-node": "^10.9.1",
+    "vite": "^3.1.7"
+  }
+}
