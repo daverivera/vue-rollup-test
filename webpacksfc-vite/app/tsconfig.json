@@ -9,8 +9,8 @@
         },
         "isolatedModules": true,
         "noImplicitThis": true,
-        "module": "commonjs",
-        "target": "es6"
+        
+        "target": "ESNext"
     },
 
     "vueCompilerOptions": {
