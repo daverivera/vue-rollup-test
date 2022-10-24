@@ -1,8 +1,9 @@
 {
   "name": "rollup",
   "scripts": {
-    "lib": "npm run build -w lib",
-    "app": "npm run build -w app",
+    "build": "npm run funcs && npm run comps && npm run app",
+    "comps": "npm run build -w comps",
+    "app": "npm run prod -w app",
     "funcs": "npm run build -w funcs",
     "module": "npm run build -w module",
     "check": "npm run check -w lib"
@@ -34,8 +35,6 @@
   },
   "workspaces": [
     "app",
-    "lib",
-    "mod",
     "comps",
     "funcs"
   ]

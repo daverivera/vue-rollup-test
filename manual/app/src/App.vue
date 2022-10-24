@@ -12,9 +12,9 @@
  
 <script>
 
-/*import { DsButton } from '@drivera/comps'*/
-import DsButton from '@drivera/comps'
-/*import { multi } from '@drivera/funcs'*/
+
+import { DsButton } from '@drivera/comps'
+import { multi } from '@drivera/funcs'
  
 export default {
     name: "App",
@@ -28,10 +28,9 @@ export default {
     },
     methods: {
         clickedButtonAction(): void {
-            /*const numbers = multi(2*4);*/
-            /*console.log(this, { numbers })*/
+            const numbers = multi(2*4);
+            console.log(this, { numbers })
             console.log(this)
-            // this.count += 1;
         }
     }
 };

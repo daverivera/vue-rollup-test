@@ -5,9 +5,7 @@
   "main": "dist/bundle.index.js",
   "scripts": {
     "build": "webpack",
-    "build1": "npm run clean && vite build",
     "clean": "rm -rf dist/*",
-    "build2": "rollup -c rollup.config.ts",
     "prod": "webpack --config production.config.ts",
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"

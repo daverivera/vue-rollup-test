@@ -105,9 +105,9 @@ const baseConfig: Configuration = {
          //}
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.ejs'
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: './index.ejs'
+        // }),
  
         new VueLoaderPlugin() as WebpackPluginInstance,
         new ForkTsCheckerWebpackPlugin({
