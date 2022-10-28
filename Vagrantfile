@@ -11,6 +11,6 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: "curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -"
     config.vm.provision "shell", inline: "sudo apt-get install nodejs git -y"
 
-    config.vm.network :forwarded_port, guest:9001, host: 9001
-    config.vm.network :forwarded_port, guest:9002, host: 9002
+    config.vm.network :forwarded_port, guest:3000, host: 3000
+    config.vm.network :forwarded_port, guest:3001, host: 3001
 end
