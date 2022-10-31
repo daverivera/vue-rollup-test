@@ -10,7 +10,6 @@
   "scripts": {
     "build": "NODE_ENV=production rollup -c --environment BUILD:production"
   },
-  "sideEffects": false,
   "devDependencies": {
     "rollup": "^3.2.3",
     "rollup-plugin-bundle-scss": "^0.1.3",
