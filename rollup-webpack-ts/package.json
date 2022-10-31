@@ -1,0 +1,15 @@
+{
+  "name": "webpack-webpack",
+  "version": "1.0.0",
+  "scripts": {
+    "app": "npm run build -w app",
+    "lib": "npm run build -w lib"
+  },
+  "workspaces": [
+    "app",
+    "lib"
+  ],
+  "devDependencies": {
+    "vue": "^2.7.13"
+  }
+}
