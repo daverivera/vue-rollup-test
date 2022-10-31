@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "esModuleInterop": true,
+        "sourceMap": true,
+ 
+        "typeRoots": ["node_modules/@types"],
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "isolatedModules": true,
+        "noImplicitThis": true,
+        "target": "esnext",
+        "module": "esnext",
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ],
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "vueCompilerOptions": {
+        "target": 2.7
+    }
+}
