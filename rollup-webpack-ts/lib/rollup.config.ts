@@ -1,4 +1,4 @@
-import vue from 'rollup-plugin-vue';
+import vue from 'rollup-plugin-vue2';
 import cleaner from 'rollup-plugin-cleaner';
 import bundleScss from 'rollup-plugin-bundle-scss';
 import ts from "rollup-plugin-ts";

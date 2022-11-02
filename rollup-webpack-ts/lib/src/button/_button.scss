@@ -1,0 +1,166 @@
+@import '../../utils/scss/mixins';
+
+.adl2-button {
+    $component-root: &;
+    $icon-margin: 8px;
+
+    @include adl-component-base(true);
+
+    align-items: center;
+    appearance: none;
+    border: var(--adl-button-border-width) solid transparent;
+    border-radius: var(--adl-button-border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--adl-button-font-size);
+    font-weight: var(--adl-button-font-weight);
+    gap: $icon-margin;
+    height: var(--adl-button-height);
+    justify-content: center;
+    line-height: 1;
+    outline: none;
+    padding: var(--adl-button-padding);
+    text-decoration: none;
+    transition: 125ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-property: color, background-color, border-color, box-shadow;
+    user-select: none;
+
+    &:focus {
+        @include adl-focus-ring;
+
+        z-index: 1;
+    }
+
+    &--primary {
+        background-color: var(--adl-button-primary-background-color);
+        color: var(--adl-button-primary-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-disabled-background-color);
+            color: var(--adl-button-primary-disabled-color);
+        }
+    }
+
+    &--secondary {
+        background-color: var(--adl-button-secondary-background-color);
+        border-color: var(--adl-button-secondary-border-color);
+        color: var(--adl-button-secondary-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-hover-border-color);
+        }
+
+        &:hover:not(:focus) {
+            box-shadow: var(--adl-button-secondary-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-active-background-color);
+            border-color: var(--adl-button-secondary-active-border-color);
+            box-shadow: var(--adl-button-secondary-active-box-shadow);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-disabled-background-color);
+            border-color: var(--adl-button-secondary-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-disabled-color);
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: var(--adl-button-ghost-color);
+
+        &:hover {
+            background-color: var(--adl-button-ghost-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-ghost-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-ghost-disabled-background-color);
+            color: var(--adl-button-ghost-disabled-color);
+        }
+    }
+
+    &--primary-destructive {
+        background-color: var(--adl-button-primary-destructive-background-color);
+        color: var(--adl-button-primary-destructive-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-destructive-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-destructive-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-destructive-disabled-background-color);
+            color: var(--adl-button-primary-destructive-disabled-color);
+        }
+    }
+
+    &--secondary-destructive {
+        background-color: var(--adl-button-secondary-destructive-background-color);
+        border-color: var(--adl-button-secondary-destructive-border-color);
+        color: var(--adl-button-secondary-destructive-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-destructive-hover-border-color);
+            box-shadow: var(--adl-button-secondary-destructive-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-destructive-active-background-color);
+            border-color: var(--adl-button-secondary-destructive-active-border-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-destructive-disabled-background-color);
+            border-color: var(--adl-button-secondary-destructive-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-destructive-disabled-color);
+        }
+    }
+
+    &--tertiary {
+        color: var(--adl-button-tertiary-color);
+    }
+
+    &--small {
+        border-radius: var(--adl-button-small-border-radius);
+        font-size: var(--adl-button-small-font-size);
+        height: var(--adl-button-small-height);
+        padding: var(--adl-button-small-padding);
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    &--icon-after {
+        flex-direction: row-reverse;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &__icon {
+        // TODO: Should we move this alignment to the icon component, i.e. wrap the comp?
+        display: inline-flex;
+    }
+}
