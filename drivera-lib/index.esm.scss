@@ -1,0 +1,1823 @@
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@adyen/adl-design-tokens/dist/css/variables.css';/*** --- ***/
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@adyen/adl-design-tokens/dist/css/variables-legacy.css';/*** --- ***/
+//
+// adl-box-sizing
+//
+// Set an element's box-sizing property.
+//
+// $include-children - Also set element's children box-sizing properties. `false` by default
+// $value - `border-box` by default
+
+@mixin adl-box-sizing($include-children: false, $value: border-box) {
+    &,
+    &::before,
+    &::after {
+        box-sizing: $value;
+    }
+
+    @if $include-children {
+        *,
+        *::before,
+        *::after {
+            box-sizing: $value;
+        }
+    }
+}
+
+//
+// adl-component-base
+//
+// Set basic styling properties for components.
+// The properties are mostly typography related and are set to ADL defaults: color, font-family, font-size, font-smoothing, font-weight, line-height.
+// A box-sizing border-box reset is also included which could also be applied to the element's children (disabled by default).
+//
+// $box-sizing-include-children - Set this parameter to `true` to also apply box-sizing reset to all child elements. `false` by default
+
+@mixin adl-component-base($box-sizing-include-children: false) {
+    @include adl-box-sizing($box-sizing-include-children);
+
+    color: var(--adl-component-base-text-color);
+    font-family: var(--adl-component-base-font-family);
+    font-size: var(--adl-component-base-font-size);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: var(--adl-component-base-font-weight);
+    line-height: var(--adl-component-base-line-height);
+}
+
+// @mixin adl-component-base($box-sizing-include-children: false) {
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+// }
+
+@mixin adl-outer-ring-generator($color) {
+    $transition-duration: 0.1s;
+    $timing-function-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    $box-shadow-initial-width: 1px;
+    $box-shadow-width: 3px;
+
+    box-shadow: 0 0 0 $box-shadow-initial-width var(--adl-color-neutral-0), 0 0 0 $box-shadow-width $color;
+    transition: $transition-duration $timing-function-ease-in-out;
+}
+
+@mixin adl-focus-ring {
+    @include adl-outer-ring-generator(var(--adl-focus-ring-color));
+}
+
+@mixin adl-error-ring {
+    @include adl-outer-ring-generator(var(--adl-error-ring-color));
+
+    opacity: 0.5;
+}
+
+
+.adl2-button {
+    $component-root: &;
+    $icon-margin: 8px;
+
+    @include adl-component-base(true);
+
+    align-items: center;
+    appearance: none;
+    border: var(--adl-button-border-width) solid transparent;
+    border-radius: var(--adl-button-border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--adl-button-font-size);
+    font-weight: var(--adl-button-font-weight);
+    gap: $icon-margin;
+    height: var(--adl-button-height);
+    justify-content: center;
+    line-height: 1;
+    outline: none;
+    padding: var(--adl-button-padding);
+    text-decoration: none;
+    transition: 125ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-property: color, background-color, border-color, box-shadow;
+    user-select: none;
+
+    &:focus {
+        @include adl-focus-ring;
+
+        z-index: 1;
+    }
+
+    &--primary {
+        background-color: var(--adl-button-primary-background-color);
+        color: var(--adl-button-primary-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-disabled-background-color);
+            color: var(--adl-button-primary-disabled-color);
+        }
+    }
+
+    &--secondary {
+        background-color: var(--adl-button-secondary-background-color);
+        border-color: var(--adl-button-secondary-border-color);
+        color: var(--adl-button-secondary-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-hover-border-color);
+        }
+
+        &:hover:not(:focus) {
+            box-shadow: var(--adl-button-secondary-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-active-background-color);
+            border-color: var(--adl-button-secondary-active-border-color);
+            box-shadow: var(--adl-button-secondary-active-box-shadow);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-disabled-background-color);
+            border-color: var(--adl-button-secondary-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-disabled-color);
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: var(--adl-button-ghost-color);
+
+        &:hover {
+            background-color: var(--adl-button-ghost-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-ghost-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-ghost-disabled-background-color);
+            color: var(--adl-button-ghost-disabled-color);
+        }
+    }
+
+    &--primary-destructive {
+        background-color: var(--adl-button-primary-destructive-background-color);
+        color: var(--adl-button-primary-destructive-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-destructive-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-destructive-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-destructive-disabled-background-color);
+            color: var(--adl-button-primary-destructive-disabled-color);
+        }
+    }
+
+    &--secondary-destructive {
+        background-color: var(--adl-button-secondary-destructive-background-color);
+        border-color: var(--adl-button-secondary-destructive-border-color);
+        color: var(--adl-button-secondary-destructive-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-destructive-hover-border-color);
+            box-shadow: var(--adl-button-secondary-destructive-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-destructive-active-background-color);
+            border-color: var(--adl-button-secondary-destructive-active-border-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-destructive-disabled-background-color);
+            border-color: var(--adl-button-secondary-destructive-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-destructive-disabled-color);
+        }
+    }
+
+    &--tertiary {
+        color: var(--adl-button-tertiary-color);
+    }
+
+    &--small {
+        border-radius: var(--adl-button-small-border-radius);
+        font-size: var(--adl-button-small-font-size);
+        height: var(--adl-button-small-height);
+        padding: var(--adl-button-small-padding);
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    &--icon-after {
+        flex-direction: row-reverse;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &__icon {
+        // TODO: Should we move this alignment to the icon component, i.e. wrap the comp?
+        display: inline-flex;
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@adyen/adl-design-tokens/dist/css/variables.css';/*** --- ***/
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@adyen/adl-design-tokens/dist/css/variables-legacy.css';/*** --- ***/
+//
+// adl-box-sizing
+//
+// Set an element's box-sizing property.
+//
+// $include-children - Also set element's children box-sizing properties. `false` by default
+// $value - `border-box` by default
+
+@mixin adl-box-sizing($include-children: false, $value: border-box) {
+    &,
+    &::before,
+    &::after {
+        box-sizing: $value;
+    }
+
+    @if $include-children {
+        *,
+        *::before,
+        *::after {
+            box-sizing: $value;
+        }
+    }
+}
+
+//
+// adl-component-base
+//
+// Set basic styling properties for components.
+// The properties are mostly typography related and are set to ADL defaults: color, font-family, font-size, font-smoothing, font-weight, line-height.
+// A box-sizing border-box reset is also included which could also be applied to the element's children (disabled by default).
+//
+// $box-sizing-include-children - Set this parameter to `true` to also apply box-sizing reset to all child elements. `false` by default
+
+@mixin adl-component-base($box-sizing-include-children: false) {
+    @include adl-box-sizing($box-sizing-include-children);
+
+    color: var(--adl-component-base-text-color);
+    font-family: var(--adl-component-base-font-family);
+    font-size: var(--adl-component-base-font-size);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: var(--adl-component-base-font-weight);
+    line-height: var(--adl-component-base-line-height);
+}
+
+// @mixin adl-component-base($box-sizing-include-children: false) {
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+// }
+
+@mixin adl-outer-ring-generator($color) {
+    $transition-duration: 0.1s;
+    $timing-function-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    $box-shadow-initial-width: 1px;
+    $box-shadow-width: 3px;
+
+    box-shadow: 0 0 0 $box-shadow-initial-width var(--adl-color-neutral-0), 0 0 0 $box-shadow-width $color;
+    transition: $transition-duration $timing-function-ease-in-out;
+}
+
+@mixin adl-focus-ring {
+    @include adl-outer-ring-generator(var(--adl-focus-ring-color));
+}
+
+@mixin adl-error-ring {
+    @include adl-outer-ring-generator(var(--adl-error-ring-color));
+
+    opacity: 0.5;
+}
+
+
+.adl2-button {
+    $component-root: &;
+    $icon-margin: 8px;
+
+    @include adl-component-base(true);
+
+    align-items: center;
+    appearance: none;
+    border: var(--adl-button-border-width) solid transparent;
+    border-radius: var(--adl-button-border-radius);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--adl-button-font-size);
+    font-weight: var(--adl-button-font-weight);
+    gap: $icon-margin;
+    height: var(--adl-button-height);
+    justify-content: center;
+    line-height: 1;
+    outline: none;
+    padding: var(--adl-button-padding);
+    text-decoration: none;
+    transition: 125ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-property: color, background-color, border-color, box-shadow;
+    user-select: none;
+
+    &:focus {
+        @include adl-focus-ring;
+
+        z-index: 1;
+    }
+
+    &--primary {
+        background-color: var(--adl-button-primary-background-color);
+        color: var(--adl-button-primary-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-disabled-background-color);
+            color: var(--adl-button-primary-disabled-color);
+        }
+    }
+
+    &--secondary {
+        background-color: var(--adl-button-secondary-background-color);
+        border-color: var(--adl-button-secondary-border-color);
+        color: var(--adl-button-secondary-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-hover-border-color);
+        }
+
+        &:hover:not(:focus) {
+            box-shadow: var(--adl-button-secondary-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-active-background-color);
+            border-color: var(--adl-button-secondary-active-border-color);
+            box-shadow: var(--adl-button-secondary-active-box-shadow);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-disabled-background-color);
+            border-color: var(--adl-button-secondary-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-disabled-color);
+        }
+    }
+
+    &--ghost {
+        background-color: transparent;
+        color: var(--adl-button-ghost-color);
+
+        &:hover {
+            background-color: var(--adl-button-ghost-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-ghost-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-ghost-disabled-background-color);
+            color: var(--adl-button-ghost-disabled-color);
+        }
+    }
+
+    &--primary-destructive {
+        background-color: var(--adl-button-primary-destructive-background-color);
+        color: var(--adl-button-primary-destructive-color);
+
+        &:hover {
+            background-color: var(--adl-button-primary-destructive-hover-background-color);
+        }
+
+        &:active {
+            background-color: var(--adl-button-primary-destructive-active-background-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-primary-destructive-disabled-background-color);
+            color: var(--adl-button-primary-destructive-disabled-color);
+        }
+    }
+
+    &--secondary-destructive {
+        background-color: var(--adl-button-secondary-destructive-background-color);
+        border-color: var(--adl-button-secondary-destructive-border-color);
+        color: var(--adl-button-secondary-destructive-color);
+
+        &:hover {
+            border-color: var(--adl-button-secondary-destructive-hover-border-color);
+            box-shadow: var(--adl-button-secondary-destructive-hover-box-shadow);
+        }
+
+        &:active {
+            background-color: var(--adl-button-secondary-destructive-active-background-color);
+            border-color: var(--adl-button-secondary-destructive-active-border-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-button-secondary-destructive-disabled-background-color);
+            border-color: var(--adl-button-secondary-destructive-disabled-border-color);
+            box-shadow: unset;
+            color: var(--adl-button-secondary-destructive-disabled-color);
+        }
+    }
+
+    &--tertiary {
+        color: var(--adl-button-tertiary-color);
+    }
+
+    &--small {
+        border-radius: var(--adl-button-small-border-radius);
+        font-size: var(--adl-button-small-font-size);
+        height: var(--adl-button-small-height);
+        padding: var(--adl-button-small-padding);
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    &--icon-after {
+        flex-direction: row-reverse;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &__icon {
+        // TODO: Should we move this alignment to the icon component, i.e. wrap the comp?
+        display: inline-flex;
+    }
+}
+
+
+
+.adl2-button-group {
+    display: flex;
+
+    button {
+        $grouped-button-offset: -4px;
+
+        border-radius: 0;
+        border-right-width: 0;
+
+        &:first-of-type {
+            border-bottom-left-radius: var(--adl-button-border-radius);
+            border-top-left-radius: var(--adl-button-border-radius);
+            margin-right: $grouped-button-offset;
+        }
+
+        &:last-of-type {
+            border-bottom-right-radius: var(--adl-button-border-radius);
+            border-right-width: var(--adl-button-border-width);
+            border-top-right-radius: var(--adl-button-border-radius);
+            margin-left: $grouped-button-offset;
+        }
+
+        &:hover + .adl2-button--secondary {
+            border-left-color: var(--adl-button-secondary-hover-border-color);
+        }
+
+        &:hover + .adl2-button--secondary-destructive {
+            border-left-color: var(--adl-button-secondary-destructive-hover-border-color);
+        }
+    }
+}
+
+
+.adl2-button-group {
+    display: flex;
+    button {
+        $grouped-button-offset: -4px;
+        border-radius: 0;
+        border-right-width: 0;
+        &:first-of-type {
+            border-bottom-left-radius: var(--adl-button-border-radius);
+            border-top-left-radius: var(--adl-button-border-radius);
+            margin-right: $grouped-button-offset;
+        }
+        &:last-of-type {
+            border-bottom-right-radius: var(--adl-button-border-radius);
+            border-right-width: var(--adl-button-border-width);
+            border-top-right-radius: var(--adl-button-border-radius);
+            margin-left: $grouped-button-offset;
+        }
+        &:hover + .adl2-button--secondary {
+            border-left-color: var(--adl-button-secondary-hover-border-color);
+        }
+        &:hover + .adl2-button--secondary-destructive {
+            border-left-color: var(--adl-button-secondary-destructive-hover-border-color);
+        }
+    }
+}
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-card {
+    $component-root: &;
+
+    $adl-card-actions-margin-right: 8px;
+    $adl-card-spacing: var(--adl-card-spacing-vertical) var(--adl-card-spacing-horizontal);
+
+    @include adl-component-base(true);
+
+    background-color: var(--adl-card-background-color);
+    border: var(--adl-card-border-color) 1px solid;
+    border-radius: var(--adl-card-border-radius);
+    overflow: hidden;
+    padding: $adl-card-spacing;
+
+    &--clickable {
+        cursor: pointer;
+    }
+
+    &--with-footer {
+        padding-bottom: 16px;
+    }
+
+    &--with-image {
+        #{$component-root}__title-container {
+            padding-top: var(--adl-card-spacing-vertical);
+        }
+    }
+
+    &--with-left-side-image {
+        display: flex;
+        height: 120px;
+        padding: 0;
+
+        #{$component-root}__header {
+            padding: $adl-card-spacing;
+        }
+    }
+
+    &__actions {
+        > :nth-child(1) {
+            margin-right: $adl-card-actions-margin-right;
+        }
+    }
+
+    &__body {
+        color: var(--adl-card-body-color);
+        font-size: var(--adl-card-body-font-size);
+        font-weight: var(--adl-card-body-font-weight);
+        line-height: var(--adl-card-body-line-height);
+        margin-top: var(--adl-card-spacing-vertical);
+    }
+
+    &__image {
+        #{$component-root}--with-image & {
+            // Pull the image to the borders, removing the padding from the card
+            $adl-card-image-spacing: calc(var(--adl-card-spacing-vertical) * -1)
+                calc(var(--adl-card-spacing-horizontal) * -1) 0;
+
+            margin: $adl-card-image-spacing;
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        #{$component-root}--with-left-side-image & {
+            max-height: 120px;
+            max-width: 120px;
+            overflow: hidden;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 16px;
+
+        > :nth-child(1) {
+            margin-right: $adl-card-actions-margin-right;
+        }
+    }
+
+    &__header {
+        display: block;
+    }
+
+    &__title {
+        font-size: var(--adl-card-title-font-size);
+        font-weight: var(--adl-card-title-font-weight);
+        line-height: var(--adl-card-title-line-height);
+    }
+
+    &__title-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__subtitle {
+        align-items: center;
+        color: var(--adl-card-subtitle-color);
+        display: flex;
+        flex: none;
+        flex-grow: 0;
+        font-size: var(--adl-card-subtitle-font-size);
+        font-weight: var(--adl-card-subtitle-font-weight);
+        line-height: var(--adl-card-subtitle-line-height);
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-card {
+    $component-root: &;
+
+    $adl-card-actions-margin-right: 8px;
+    $adl-card-spacing: var(--adl-card-spacing-vertical) var(--adl-card-spacing-horizontal);
+
+    @include adl-component-base(true);
+
+    background-color: var(--adl-card-background-color);
+    border: var(--adl-card-border-color) 1px solid;
+    border-radius: var(--adl-card-border-radius);
+    overflow: hidden;
+    padding: $adl-card-spacing;
+
+    &--clickable {
+        cursor: pointer;
+    }
+
+    &--with-footer {
+        padding-bottom: 16px;
+    }
+
+    &--with-image {
+        #{$component-root}__title-container {
+            padding-top: var(--adl-card-spacing-vertical);
+        }
+    }
+
+    &--with-left-side-image {
+        display: flex;
+        height: 120px;
+        padding: 0;
+
+        #{$component-root}__header {
+            padding: $adl-card-spacing;
+        }
+    }
+
+    &__actions {
+        > :nth-child(1) {
+            margin-right: $adl-card-actions-margin-right;
+        }
+    }
+
+    &__body {
+        color: var(--adl-card-body-color);
+        font-size: var(--adl-card-body-font-size);
+        font-weight: var(--adl-card-body-font-weight);
+        line-height: var(--adl-card-body-line-height);
+        margin-top: var(--adl-card-spacing-vertical);
+    }
+
+    &__image {
+        #{$component-root}--with-image & {
+            // Pull the image to the borders, removing the padding from the card
+            $adl-card-image-spacing: calc(var(--adl-card-spacing-vertical) * -1)
+                calc(var(--adl-card-spacing-horizontal) * -1) 0;
+
+            margin: $adl-card-image-spacing;
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        #{$component-root}--with-left-side-image & {
+            max-height: 120px;
+            max-width: 120px;
+            overflow: hidden;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 16px;
+
+        > :nth-child(1) {
+            margin-right: $adl-card-actions-margin-right;
+        }
+    }
+
+    &__header {
+        display: block;
+    }
+
+    &__title {
+        font-size: var(--adl-card-title-font-size);
+        font-weight: var(--adl-card-title-font-weight);
+        line-height: var(--adl-card-title-line-height);
+    }
+
+    &__title-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__subtitle {
+        align-items: center;
+        color: var(--adl-card-subtitle-color);
+        display: flex;
+        flex: none;
+        flex-grow: 0;
+        font-size: var(--adl-card-subtitle-font-size);
+        font-weight: var(--adl-card-subtitle-font-weight);
+        line-height: var(--adl-card-subtitle-line-height);
+    }
+}
+
+
+
+.adl-card-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+
+.adl-card-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-checkbox {
+    $component-root: &;
+
+    @include adl-component-base(true);
+
+    display: inline-flex;
+    vertical-align: baseline;
+
+    &__input {
+        appearance: none;
+        background-color: var(--adl-checkbox-input-background-color);
+        border: 1px solid var(--adl-checkbox-input-border-color);
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        flex-basis: 16px;
+        height: 16px;
+        margin: 0;
+        min-width: 16px;
+        outline: none;
+        position: relative;
+        text-align: center;
+        top: 3px;
+        width: 16px;
+
+        &::after {
+            bottom: -4px;
+            content: '';
+            display: block;
+            left: -4px;
+            position: absolute;
+            right: -4px;
+            top: -4px;
+        }
+
+        &::before {
+            background-color: var(--adl-checkbox-input-before-color);
+            content: '';
+            display: block;
+            height: 100%;
+            line-height: 1;
+            -webkit-mask-size: contain;
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+        }
+
+        &:checked::before,
+        &:indeterminate::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        &:checked::before {
+            -webkit-mask-image: url('@/icons/checkmark.svg');
+        }
+
+        &:indeterminate::before {
+            -webkit-mask-image: url('@/icons/minus.svg');
+        }
+
+        &:disabled::before {
+            background-color: var(--adl-checkbox-input-disabled-before-color);
+        }
+
+        &:hover {
+            border-color: var(--adl-checkbox-input-hover-border-color);
+        }
+
+        &:focus {
+            @include adl-focus-ring;
+        }
+
+        &:focus:hover {
+            border-color: var(--adl-checkbox-input-focus-hover-border-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-checkbox-input-disabled-background-color);
+            border-color: var(--adl-checkbox-input-disabled-border-color);
+            cursor: not-allowed;
+        }
+
+        &:checked,
+        &:indeterminate {
+            background-color: var(--adl-checkbox-input-checked-background-color);
+            border-color: var(--adl-checkbox-input-checked-border-color);
+        }
+
+        &:checked:hover,
+        &:indeterminate:hover {
+            background-color: var(--adl-checkbox-input-checked-hover-background-color);
+            border-color: var(--adl-checkbox-input-checked-hover-border-color);
+        }
+
+        &:checked:disabled,
+        &:indeterminate:disabled {
+            background-color: var(--adl-checkbox-input-checked-disabled-background-color);
+            border-color: var(--adl-checkbox-input-checked-disabled-border-color);
+        }
+    }
+
+    &__text {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin-right: 16px;
+        padding-left: 8px;
+
+        #{$component-root}__input:disabled + & {
+            cursor: not-allowed;
+        }
+    }
+
+    &__label {
+        color: var(--adl-checkbox-label-color);
+        font-size: var(--adl-checkbox-label-font-size);
+        font-weight: var(--adl-checkbox-label-font-weight);
+        line-height: var(--adl-checkbox-label-line-height);
+        vertical-align: baseline;
+    }
+
+    &__description {
+        color: var(--adl-checkbox-description-color);
+        font-size: var(--adl-checkbox-description-font-size);
+        line-height: var(--adl-checkbox-description-line-height);
+
+        #{$component-root}__input:disabled + * & {
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-checkbox {
+    $component-root: &;
+
+    @include adl-component-base(true);
+
+    display: inline-flex;
+    vertical-align: baseline;
+
+    &__input {
+        appearance: none;
+        background-color: var(--adl-checkbox-input-background-color);
+        border: 1px solid var(--adl-checkbox-input-border-color);
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        flex-basis: 16px;
+        height: 16px;
+        margin: 0;
+        min-width: 16px;
+        outline: none;
+        position: relative;
+        text-align: center;
+        top: 3px;
+        width: 16px;
+
+        &::after {
+            bottom: -4px;
+            content: '';
+            display: block;
+            left: -4px;
+            position: absolute;
+            right: -4px;
+            top: -4px;
+        }
+
+        &::before {
+            background-color: var(--adl-checkbox-input-before-color);
+            content: '';
+            display: block;
+            height: 100%;
+            line-height: 1;
+            -webkit-mask-size: contain;
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+        }
+
+        &:checked::before,
+        &:indeterminate::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        &:checked::before {
+            -webkit-mask-image: url('@/icons/checkmark.svg');
+        }
+
+        &:indeterminate::before {
+            -webkit-mask-image: url('@/icons/minus.svg');
+        }
+
+        &:disabled::before {
+            background-color: var(--adl-checkbox-input-disabled-before-color);
+        }
+
+        &:hover {
+            border-color: var(--adl-checkbox-input-hover-border-color);
+        }
+
+        &:focus {
+            @include adl-focus-ring;
+        }
+
+        &:focus:hover {
+            border-color: var(--adl-checkbox-input-focus-hover-border-color);
+        }
+
+        &:disabled {
+            background-color: var(--adl-checkbox-input-disabled-background-color);
+            border-color: var(--adl-checkbox-input-disabled-border-color);
+            cursor: not-allowed;
+        }
+
+        &:checked,
+        &:indeterminate {
+            background-color: var(--adl-checkbox-input-checked-background-color);
+            border-color: var(--adl-checkbox-input-checked-border-color);
+        }
+
+        &:checked:hover,
+        &:indeterminate:hover {
+            background-color: var(--adl-checkbox-input-checked-hover-background-color);
+            border-color: var(--adl-checkbox-input-checked-hover-border-color);
+        }
+
+        &:checked:disabled,
+        &:indeterminate:disabled {
+            background-color: var(--adl-checkbox-input-checked-disabled-background-color);
+            border-color: var(--adl-checkbox-input-checked-disabled-border-color);
+        }
+    }
+
+    &__text {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin-right: 16px;
+        padding-left: 8px;
+
+        #{$component-root}__input:disabled + & {
+            cursor: not-allowed;
+        }
+    }
+
+    &__label {
+        color: var(--adl-checkbox-label-color);
+        font-size: var(--adl-checkbox-label-font-size);
+        font-weight: var(--adl-checkbox-label-font-weight);
+        line-height: var(--adl-checkbox-label-line-height);
+        vertical-align: baseline;
+    }
+
+    &__description {
+        color: var(--adl-checkbox-description-color);
+        font-size: var(--adl-checkbox-description-font-size);
+        line-height: var(--adl-checkbox-description-line-height);
+
+        #{$component-root}__input:disabled + * & {
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-input-radio {
+    $component-root: &;
+    $border-radius: 12px;
+    $knob-offset: 4px;
+    $input-space-around-increase: 4px;
+
+    @include adl-component-base(true);
+
+    display: inline-flex;
+    line-height: 24px;
+
+    &--label-first {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    &__input {
+        appearance: none;
+        background-color: var(--adl-input-radio-unchecked-background-color);
+        border: 1px solid var(--adl-input-radio-unchecked-border-color);
+        border-radius: $border-radius;
+        cursor: pointer;
+        display: inline-block;
+        height: var(--adl-input-radio-size);
+        margin: 0;
+        outline: none;
+        position: relative;
+        top: var(--adl-input-radio-offset-top);
+        width: var(--adl-input-radio-size);
+
+        // Increase the clickable area
+        &::after {
+            bottom: -$input-space-around-increase;
+            content: '';
+            display: block;
+            left: -$input-space-around-increase;
+            position: absolute;
+            right: -$input-space-around-increase;
+            top: -$input-space-around-increase;
+        }
+
+        &::before {
+            background-color: var(--adl-input-radio-knob-color);
+            border-radius: $border-radius;
+            content: '';
+            display: block;
+            height: var(--adl-input-radio-knob-size);
+            left: $knob-offset;
+            opacity: 0;
+            position: absolute;
+            top: $knob-offset;
+            transform: scale(0);
+            transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: var(--adl-input-radio-knob-size);
+        }
+
+        &:hover {
+            border-color: var(--adl-input-radio-unchecked-hover-border-color);
+        }
+
+        &:focus {
+            @include adl-focus-ring;
+        }
+
+        &:disabled {
+            background-color: var(--adl-input-radio-unchecked-disabled-background-color);
+            border-color: var(--adl-input-radio-unchecked-disabled-border-color);
+            cursor: not-allowed;
+
+            &::before {
+                background-color: var(--adl-input-radio-knob-disabled-color);
+            }
+        }
+
+        &:checked {
+            background-color: var(--adl-input-radio-checked-background-color);
+            border-color: var(--adl-input-radio-checked-border-color);
+
+            &::before {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            &:disabled {
+                background-color: var(--adl-input-radio-checked-disabled-background-color);
+                border-color: var(--adl-input-radio-checked-disabled-border-color);
+            }
+
+            &:hover:enabled {
+                border-color: var(--adl-input-radio-checked-hover-border-color);
+            }
+        }
+    }
+
+    &__description {
+        padding-left: var(--adl-input-radio-description-padding);
+
+        #{$component-root}--label-first > & {
+            padding-left: 0;
+            padding-right: var(--adl-input-radio-description-padding);
+        }
+
+        #{$component-root}--inline > & {
+            display: inline-flex;
+        }
+    }
+
+    &__label {
+        color: var(--adl-input-radio-label-font-color);
+        cursor: pointer;
+        display: block;
+        font-weight: var(--adl-input-radio-label-font-weight);
+
+        #{$component-root}__input:disabled + * & {
+            color: var(--adl-input-radio-label-disabled-font-color);
+        }
+    }
+
+    &__sub-label {
+        color: var(--adl-input-radio-sub-label-font-color);
+        display: block;
+        font-weight: var(--adl-input-radio-sub-label-font-weight);
+
+        #{$component-root}--inline > * & {
+            padding-left: var(--adl-input-radio-inline-space);
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-input-radio {
+    $component-root: &;
+    $border-radius: 12px;
+    $knob-offset: 4px;
+    $input-space-around-increase: 4px;
+
+    @include adl-component-base(true);
+
+    display: inline-flex;
+    line-height: 24px;
+
+    &--label-first {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    &__input {
+        appearance: none;
+        background-color: var(--adl-input-radio-unchecked-background-color);
+        border: 1px solid var(--adl-input-radio-unchecked-border-color);
+        border-radius: $border-radius;
+        cursor: pointer;
+        display: inline-block;
+        height: var(--adl-input-radio-size);
+        margin: 0;
+        outline: none;
+        position: relative;
+        top: var(--adl-input-radio-offset-top);
+        width: var(--adl-input-radio-size);
+
+        // Increase the clickable area
+        &::after {
+            bottom: -$input-space-around-increase;
+            content: '';
+            display: block;
+            left: -$input-space-around-increase;
+            position: absolute;
+            right: -$input-space-around-increase;
+            top: -$input-space-around-increase;
+        }
+
+        &::before {
+            background-color: var(--adl-input-radio-knob-color);
+            border-radius: $border-radius;
+            content: '';
+            display: block;
+            height: var(--adl-input-radio-knob-size);
+            left: $knob-offset;
+            opacity: 0;
+            position: absolute;
+            top: $knob-offset;
+            transform: scale(0);
+            transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: var(--adl-input-radio-knob-size);
+        }
+
+        &:hover {
+            border-color: var(--adl-input-radio-unchecked-hover-border-color);
+        }
+
+        &:focus {
+            @include adl-focus-ring;
+        }
+
+        &:disabled {
+            background-color: var(--adl-input-radio-unchecked-disabled-background-color);
+            border-color: var(--adl-input-radio-unchecked-disabled-border-color);
+            cursor: not-allowed;
+
+            &::before {
+                background-color: var(--adl-input-radio-knob-disabled-color);
+            }
+        }
+
+        &:checked {
+            background-color: var(--adl-input-radio-checked-background-color);
+            border-color: var(--adl-input-radio-checked-border-color);
+
+            &::before {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            &:disabled {
+                background-color: var(--adl-input-radio-checked-disabled-background-color);
+                border-color: var(--adl-input-radio-checked-disabled-border-color);
+            }
+
+            &:hover:enabled {
+                border-color: var(--adl-input-radio-checked-hover-border-color);
+            }
+        }
+    }
+
+    &__description {
+        padding-left: var(--adl-input-radio-description-padding);
+
+        #{$component-root}--label-first > & {
+            padding-left: 0;
+            padding-right: var(--adl-input-radio-description-padding);
+        }
+
+        #{$component-root}--inline > & {
+            display: inline-flex;
+        }
+    }
+
+    &__label {
+        color: var(--adl-input-radio-label-font-color);
+        cursor: pointer;
+        display: block;
+        font-weight: var(--adl-input-radio-label-font-weight);
+
+        #{$component-root}__input:disabled + * & {
+            color: var(--adl-input-radio-label-disabled-font-color);
+        }
+    }
+
+    &__sub-label {
+        color: var(--adl-input-radio-sub-label-font-color);
+        display: block;
+        font-weight: var(--adl-input-radio-sub-label-font-weight);
+
+        #{$component-root}--inline > * & {
+            padding-left: var(--adl-input-radio-inline-space);
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-tabs-handle {
+    $component-root: &;
+
+    color: var(--adl-tabs-handle-color);
+    cursor: pointer;
+    font-size: var(--adl-tabs-handle-font-size);
+    font-weight: 500;
+    line-height: 16px;
+    margin-right: var(--adl-tabs-handle-margin-right);
+    padding: var(--adl-tabs-handle-padding);
+    transition: box-shadow 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &:not(.adl-tabs-handle--active, .adl-tabs-handle--disabled):hover {
+        box-shadow: 0 calc(var(--adl-tabs-handle-hover-box-shadow-height) * -1) 0 0
+            var(--adl-tabs-handle-hover-box-shadow-color) inset;
+    }
+
+    &--active {
+        box-shadow: 0 calc(var(--adl-tabs-handle-active-box-shadow-height) * -1) 0 0
+            var(--adl-tabs-handle-active-box-shadow-color) inset;
+        color: var(--adl-tabs-handle-active-color);
+    }
+
+    &--disabled {
+        color: var(--adl-tabs-handle-disabled-color);
+        cursor: not-allowed;
+    }
+
+    &__title {
+        align-items: center;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: flex;
+        height: var(--adl-tabs-handle-title-height);
+        padding: var(--adl-tabs-handle-title-padding);
+        width: 100%;
+
+        #{$component-root}:focus & {
+            @include adl-focus-ring;
+        }
+
+        #{$component-root}:not(.adl-tabs-handle--active, .adl-tabs-handle--disabled):hover & {
+            background-color: var(--adl-tabs-handle-hover-background-color);
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-tabs-handle {
+    $component-root: &;
+
+    color: var(--adl-tabs-handle-color);
+    cursor: pointer;
+    font-size: var(--adl-tabs-handle-font-size);
+    font-weight: 500;
+    line-height: 16px;
+    margin-right: var(--adl-tabs-handle-margin-right);
+    padding: var(--adl-tabs-handle-padding);
+    transition: box-shadow 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &:not(.adl-tabs-handle--active, .adl-tabs-handle--disabled):hover {
+        box-shadow: 0 calc(var(--adl-tabs-handle-hover-box-shadow-height) * -1) 0 0
+            var(--adl-tabs-handle-hover-box-shadow-color) inset;
+    }
+
+    &--active {
+        box-shadow: 0 calc(var(--adl-tabs-handle-active-box-shadow-height) * -1) 0 0
+            var(--adl-tabs-handle-active-box-shadow-color) inset;
+        color: var(--adl-tabs-handle-active-color);
+    }
+
+    &--disabled {
+        color: var(--adl-tabs-handle-disabled-color);
+        cursor: not-allowed;
+    }
+
+    &__title {
+        align-items: center;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: flex;
+        height: var(--adl-tabs-handle-title-height);
+        padding: var(--adl-tabs-handle-title-padding);
+        width: 100%;
+
+        #{$component-root}:focus & {
+            @include adl-focus-ring;
+        }
+
+        #{$component-root}:not(.adl-tabs-handle--active, .adl-tabs-handle--disabled):hover & {
+            background-color: var(--adl-tabs-handle-hover-background-color);
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-tooltip {
+    $component-root: &;
+    $z-index-override-for-modal: 602;
+
+    @include adl-component-base(true);
+
+    background-color: var(--adl-tooltip-background-color);
+    border-radius: var(--adl-tooltip-border-radius);
+    color: var(--adl-tooltip-color);
+    line-height: var(--adl-tooltip-line-height);
+    max-width: 400px;
+    padding: var(--adl-tooltip-padding);
+    pointer-events: none;
+    text-align: justify;
+    transition: 0.1s ease-out;
+    transition-property: opacity, visibility;
+
+    // src/components/modal/modal.vue has a temporary z-index override of 600 which makes tooltips
+    // go behind the modal when used inside modals. Should be removed when the modal override
+    // is removed.
+    z-index: $z-index-override-for-modal;
+
+    &--hidden {
+        opacity: 0;
+        transition-timing-function: ease-in;
+        visibility: hidden;
+    }
+
+    // popper-container has a child element called "arrow" which has pseudo-element with white borders
+    &::v-deep #{$component-root}__arrow::before {
+        border-color: var(--adl-tooltip-background-color);
+        display: var(--adl-tooltip-arrow-display);
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl2-tooltip {
+    $component-root: &;
+    $z-index-override-for-modal: 602;
+
+    @include adl-component-base(true);
+
+    background-color: var(--adl-tooltip-background-color);
+    border-radius: var(--adl-tooltip-border-radius);
+    color: var(--adl-tooltip-color);
+    line-height: var(--adl-tooltip-line-height);
+    max-width: 400px;
+    padding: var(--adl-tooltip-padding);
+    pointer-events: none;
+    text-align: justify;
+    transition: 0.1s ease-out;
+    transition-property: opacity, visibility;
+
+    // src/components/modal/modal.vue has a temporary z-index override of 600 which makes tooltips
+    // go behind the modal when used inside modals. Should be removed when the modal override
+    // is removed.
+    z-index: $z-index-override-for-modal;
+
+    &--hidden {
+        opacity: 0;
+        transition-timing-function: ease-in;
+        visibility: hidden;
+    }
+
+    // popper-container has a child element called "arrow" which has pseudo-element with white borders
+    &::v-deep #{$component-root}__arrow::before {
+        border-color: var(--adl-tooltip-background-color);
+        display: var(--adl-tooltip-arrow-display);
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+$transition-time: 0.2s !default;
+$handle-offset: 4px !default;
+$track-padding: 2px !default;
+
+.adl2-toggle {
+    $component-root: &;
+    $label-padding: var(--adl-toggle-label-padding);
+
+    @include adl-component-base(true);
+
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    user-select: none;
+    width: auto;
+
+    &--label-first {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    &__input {
+        opacity: 0;
+        position: absolute;
+    }
+
+    &__track {
+        background-color: var(--adl-toggle-track-background-color);
+        border-radius: var(--adl-toggle-track-border-radius);
+        display: inline-block;
+        height: var(--adl-toggle-track-height);
+        padding: $track-padding;
+        position: relative;
+        text-align: left;
+        top: -1px;
+        vertical-align: middle;
+        width: var(--adl-toggle-track-width);
+
+        #{$component-root}__input:hover + & {
+            background: var(--adl-toggle-track-hover-background-color);
+        }
+
+        #{$component-root}__input:focus + & {
+            @include adl-focus-ring;
+
+            background: var(--adl-toggle-track-focus-background-color);
+        }
+
+        #{$component-root}__input:checked + & {
+            background: var(--adl-toggle-track-checked-background-color);
+            border-color: var(--adl-toggle-track-checked-border-color);
+        }
+
+        #{$component-root}__input:checked:hover + & {
+            background: var(--adl-toggle-track-checked-hover-background-color);
+        }
+
+        #{$component-root}__input:disabled + & {
+            background-color: var(--adl-toggle-track-disabled-background-color);
+            cursor: not-allowed;
+        }
+
+        #{$component-root}__input:checked:disabled + & {
+            background: var(--adl-toggle-track-checked-disabled-background-color);
+        }
+    }
+
+    &__handle {
+        background-color: var(--adl-toggle-handle-background-color);
+        border-radius: var(--adl-toggle-handle-border-radius);
+        box-shadow: var(--adl-toggle-handle-box-shadow);
+        height: var(--adl-toggle-handle-height);
+        position: absolute;
+        transform: translateZ(0);
+        transition: transform $transition-time;
+        width: var(--adl-toggle-handle-width);
+
+        #{$component-root}__input:disabled + * & {
+            background-color: var(--adl-toggle-handle-disabled-background-color);
+            cursor: not-allowed;
+        }
+
+        #{$component-root}__input:checked:disabled + * & {
+            background-color: var(--adl-toggle-handle-checked-disabled-background-color);
+        }
+
+        #{$component-root}__input:checked + * & {
+            display: block;
+            transform: translateX(
+                calc(var(--adl-toggle-track-width) - (var(--adl-toggle-handle-width) + $handle-offset))
+            );
+        }
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        padding-left: $label-padding;
+
+        #{$component-root}--label-first > & {
+            padding-left: 0;
+            padding-right: $label-padding;
+        }
+
+        #{$component-root}--inline > & {
+            display: inline-flex;
+            flex-direction: row;
+        }
+    }
+
+    &__label {
+        color: var(--adl-toggle-label-color);
+        font-size: var(--adl-toggle-label-font-size);
+        font-weight: var(--adl-toggle-label-font-weight);
+        line-height: var(--adl-toggle-label-line-height);
+        vertical-align: baseline;
+    }
+
+    &__sub-label {
+        color: var(--adl-toggle-sub-label-color);
+        display: block;
+        font-size: var(--adl-toggle-sub-label-font-size);
+        font-weight: var(--adl-toggle-sub-label-font-weight);
+        line-height: var(--adl-toggle-sub-label-line-height);
+
+        #{$component-root}--inline > * & {
+            padding-left: 4px;
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+$transition-time: 0.2s !default;
+$handle-offset: 4px !default;
+$track-padding: 2px !default;
+
+.adl2-toggle {
+    $component-root: &;
+    $label-padding: var(--adl-toggle-label-padding);
+
+    @include adl-component-base(true);
+
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    user-select: none;
+    width: auto;
+
+    &--label-first {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    &__input {
+        opacity: 0;
+        position: absolute;
+    }
+
+    &__track {
+        background-color: var(--adl-toggle-track-background-color);
+        border-radius: var(--adl-toggle-track-border-radius);
+        display: inline-block;
+        height: var(--adl-toggle-track-height);
+        padding: $track-padding;
+        position: relative;
+        text-align: left;
+        top: -1px;
+        vertical-align: middle;
+        width: var(--adl-toggle-track-width);
+
+        #{$component-root}__input:hover + & {
+            background: var(--adl-toggle-track-hover-background-color);
+        }
+
+        #{$component-root}__input:focus + & {
+            @include adl-focus-ring;
+
+            background: var(--adl-toggle-track-focus-background-color);
+        }
+
+        #{$component-root}__input:checked + & {
+            background: var(--adl-toggle-track-checked-background-color);
+            border-color: var(--adl-toggle-track-checked-border-color);
+        }
+
+        #{$component-root}__input:checked:hover + & {
+            background: var(--adl-toggle-track-checked-hover-background-color);
+        }
+
+        #{$component-root}__input:disabled + & {
+            background-color: var(--adl-toggle-track-disabled-background-color);
+            cursor: not-allowed;
+        }
+
+        #{$component-root}__input:checked:disabled + & {
+            background: var(--adl-toggle-track-checked-disabled-background-color);
+        }
+    }
+
+    &__handle {
+        background-color: var(--adl-toggle-handle-background-color);
+        border-radius: var(--adl-toggle-handle-border-radius);
+        box-shadow: var(--adl-toggle-handle-box-shadow);
+        height: var(--adl-toggle-handle-height);
+        position: absolute;
+        transform: translateZ(0);
+        transition: transform $transition-time;
+        width: var(--adl-toggle-handle-width);
+
+        #{$component-root}__input:disabled + * & {
+            background-color: var(--adl-toggle-handle-disabled-background-color);
+            cursor: not-allowed;
+        }
+
+        #{$component-root}__input:checked:disabled + * & {
+            background-color: var(--adl-toggle-handle-checked-disabled-background-color);
+        }
+
+        #{$component-root}__input:checked + * & {
+            display: block;
+            transform: translateX(
+                calc(var(--adl-toggle-track-width) - (var(--adl-toggle-handle-width) + $handle-offset))
+            );
+        }
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        padding-left: $label-padding;
+
+        #{$component-root}--label-first > & {
+            padding-left: 0;
+            padding-right: $label-padding;
+        }
+
+        #{$component-root}--inline > & {
+            display: inline-flex;
+            flex-direction: row;
+        }
+    }
+
+    &__label {
+        color: var(--adl-toggle-label-color);
+        font-size: var(--adl-toggle-label-font-size);
+        font-weight: var(--adl-toggle-label-font-weight);
+        line-height: var(--adl-toggle-label-line-height);
+        vertical-align: baseline;
+    }
+
+    &__sub-label {
+        color: var(--adl-toggle-sub-label-color);
+        display: block;
+        font-size: var(--adl-toggle-sub-label-font-size);
+        font-weight: var(--adl-toggle-sub-label-font-weight);
+        line-height: var(--adl-toggle-sub-label-line-height);
+
+        #{$component-root}--inline > * & {
+            padding-left: 4px;
+        }
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-tabs {
+    @include adl-component-base;
+
+    display: flex;
+    flex-direction: column;
+
+    &__handles {
+        border-bottom: 1px solid var(--adl-tabs-border-bottom-color);
+        display: inline-flex;
+    }
+}
+
+
+
+/*** IMPORTED FILE NOT FOUND ***/
+@import '@/utils/scss/mixins';/*** --- ***/
+
+.adl-tabs {
+    @include adl-component-base;
+
+    display: flex;
+    flex-direction: column;
+
+    &__handles {
+        border-bottom: 1px solid var(--adl-tabs-border-bottom-color);
+        display: inline-flex;
+    }
+}
+
