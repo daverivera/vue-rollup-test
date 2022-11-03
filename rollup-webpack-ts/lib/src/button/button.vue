@@ -22,7 +22,20 @@
     /**
      * Button component for all the various types of ADL buttons.
      *
+     * @usage
      * import { AdlButton, AdlIconPosition } from '@adyen/adl-vue-components';
+     * 
+     * export default {
+     *     components: { AdlInputRadio },
+     *     template: `
+     *         <adl-button
+     *             disabled
+     *             :icon-position="AdlIconPosition.AFTER"
+     *         >
+     *             Button text
+     *         </adl-button>
+     *     `,
+     * }
      */
     export default defineComponent({
         name: 'adl-button',
