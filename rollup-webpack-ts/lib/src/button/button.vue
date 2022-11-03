@@ -17,41 +17,12 @@
 
 <script lang="ts">
     import { PropType, defineComponent } from 'vue';
-export enum AdlButtonVariant {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-    GHOST = 'ghost',
-}
-export enum AdlButtonPropClasses {
-    TERTIARY = 'tertiary',
-    SMALL = 'small',
-    BLOCK = 'block',
-    GROUPED = 'grouped',
-    DESTRUCTIVE = 'destructive',
-    ICON_POSITION_AFTER = 'icon-after',
-}
-// Use Label position and rename it to something more general?????
-export enum AdlButtonIconPosition {
-    BEFORE = 'before',
-    AFTER = 'after',
-}
+    import { AdlButtonVariant, AdlButtonIconPosition, AdlButtonPropClasses } from './button.types';
+    
     /**
      * Button component for all the various types of ADL buttons.
      *
-     * @usage
      * import { AdlButton, AdlIconPosition } from '@adyen/adl-vue-components';
-     *
-     * export default {
-     *     components: { AdlInputRadio },
-     *     template: `
-     *         <adl-button
-     *             disabled
-     *             :icon-position="AdlIconPosition.AFTER"
-     *         >
-     *             Button text
-     *         </adl-button>
-     *     `,
-     * }
      */
     export default defineComponent({
         name: 'adl-button',

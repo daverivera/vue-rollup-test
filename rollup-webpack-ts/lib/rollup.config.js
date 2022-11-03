@@ -1,7 +1,8 @@
 import vue from 'rollup-plugin-vue2';
 import cleaner from 'rollup-plugin-cleaner';
 import bundleScss from 'rollup-plugin-bundle-scss';
-import ts from "rollup-plugin-ts";
+import ts from "rollup-plugin-typescript2";
+import { terser } from 'rollup-plugin-terser';
 
 export default {
   input: 'src/index.ts',
@@ -15,6 +16,14 @@ export default {
   plugins: [
     cleaner({ targets: ['dist'] }),
     bundleScss(),
+    // terser({
+    // // remove all comments
+    //     format: {
+    //       comments: false
+    //     },
+    // // prevent any compression
+    //     compress: false
+    // }),
     ts({
       tsconfig: "tsconfig.json"
     }),
