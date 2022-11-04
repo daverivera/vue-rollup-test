@@ -1,8 +1,9 @@
 import vue from 'rollup-plugin-vue2';
 import cleaner from 'rollup-plugin-cleaner';
-import bundleScss from 'rollup-plugin-bundle-scss';
 import ts from "rollup-plugin-typescript2";
 import cleanup from 'rollup-plugin-cleanup';
+import postcss from 'rollup-plugin-postcss';
+import path from 'path';
 
 export default {
   input: 'src/index.ts',
@@ -15,11 +16,18 @@ export default {
   external: ['vue'],
   plugins: [
     cleaner({ targets: ['dist'] }),
-    bundleScss(),
     cleanup({ comments: "none", extensions: ["js", "ts", "vue"] }),
-    ts({
-      tsconfig: "tsconfig.json"
+    ts(),
+    vue({
+      css: false
     }),
-    vue(),
+    postcss({
+      use: [
+        ['sass', {
+          includePaths: [path.join(__dirname, 'src')],
+          data: "@import 'utils/scss/mixins';"
+        }]
+      ]
+    })
   ],
 };

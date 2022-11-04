@@ -1,10 +1,10 @@
-@import '../../utils/scss/mixins';
+
 
 .adl2-button {
     $component-root: &;
     $icon-margin: 8px;
 
-    @include adl-component-base(true);
+    // @include adl-component-base(true);
 
     align-items: center;
     appearance: none;
