@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@drivera/lib": "*",
+    "@adyen/ui-assets-icons-16": "file:adyen-ui-assets-icons-16-3.1.0.tgz",
     "vue": "^2.7.13"
   }
 }

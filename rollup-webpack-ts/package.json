@@ -10,6 +10,6 @@
     "lib"
   ],
   "devDependencies": {
-    "vue": "^2.7.13"
+    "vue": "2.7.10"
   }
 }

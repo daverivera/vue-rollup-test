@@ -4,7 +4,8 @@
             <h1>ADL Test project</h1>
         </head>
         <article>
-            <ds-button @click="clickedButtonAction">Increment</ds-button>
+            <!-- <ds-button @click="clickedButtonAction">Increment</ds-button> -->
+            <account-switch />
             <span>{{ count }}</span>
         </article>
     </div>
@@ -13,26 +14,21 @@
 <script lang="ts">
 
 
-import { DsButton } from '@drivera/lib'
+// import { DsButton } from '@drivera/lib'
 /*import { multi } from '@drivera/funcs'*/
+import {AccountSwitch} from '@adyen/ui-assets-icons-16'
  
 export default {
     name: "App",
     components: {
-        DsButton
+AccountSwitch,
+        // DsButton
     },
-    data() {
+    setup() {
+        // console.log(Icons)
         return {
             count: 0,
         }
     },
-    methods: {
-        clickedButtonAction(): void {
-            /*const numbers = multi(2*4);*/
-            /*console.log(this, { numbers })*/
-            console.log(this)
-            // this.count += 1;
-        }
-    }
 };
 </script>
